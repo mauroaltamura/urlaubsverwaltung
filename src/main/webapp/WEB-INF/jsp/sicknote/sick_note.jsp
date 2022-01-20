@@ -181,11 +181,6 @@
                     </tbody>
                 </table>
 
-            </div>
-            <%-- End of first column --%>
-
-            <div class="col-xs-12 col-sm-12 col-md-6">
-
                 <uv:section-heading>
                     <jsp:attribute name="actions">
                         <c:if test="${canCommentSickNote}">
