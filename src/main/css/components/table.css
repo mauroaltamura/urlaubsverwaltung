@@ -25,7 +25,7 @@ tr.inactive td > * {
   margin-bottom: 27px;
 }
 
-.list-table.list-table-bt-0 tr:first-child td {
+.list-table tr:first-child td {
   border-top: none;
 }
 
