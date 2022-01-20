@@ -49,7 +49,7 @@
                     </jsp:body>
                 </uv:section-heading>
 
-                <uv:box className="tw-h-32 tw-mb-8">
+                <uv:box className="tw-h-32 tw-mb-4">
                     <jsp:attribute name="icon">
                         <uv:box-icon className="tw-bg-emerald-500 tw-text-white dark:tw-bg-green-500 dark:tw-text-zinc-900">
                             <icon:briefcase className="tw-w-8 tw-h-8"/>
@@ -83,7 +83,7 @@
                         <spring:message code="overtime.progress.title"/>
                     </h2>
                 </uv:section-heading>
-                <table class="list-table striped-table bordered-table tw-mb-8 tw-text-sm">
+                <table class="list-table striped-table tw-mb-8 tw-text-sm">
                     <tbody>
                     <c:forEach items="${comments}" var="comment">
                         <tr>
@@ -120,9 +120,9 @@
                         <spring:message code="overtime.data.person"/>
                     </h2>
                 </uv:section-heading>
-                <uv:overtime_person person="${record.person}" cssClass="print:tw-hidden tw-h-32 tw-mb-5"/>
-                <uv:overtime-total hours="${overtimeTotal}" cssClass="tw-h-32 tw-mb-4"/>
-                <uv:overtime-left hours="${overtimeLeft}" cssClass="tw-h-32 tw-mb-4"/>
+                <uv:overtime_person person="${record.person}" cssClass="print:tw-hidden tw-h-32"/>
+                <uv:overtime-total hours="${overtimeTotal}" cssClass="tw-h-32"/>
+                <uv:overtime-left hours="${overtimeLeft}" cssClass="tw-h-32"/>
             </div>
         </div>
         <%-- End of row --%>

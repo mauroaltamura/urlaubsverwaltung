@@ -95,7 +95,7 @@
     </jsp:body>
 </uv:box>
 
-<table class="list-table striped-table bordered-table tw-text-sm tw-table-fixed">
+<table class="list-table striped-table tw-text-sm tw-table-fixed">
 
     <tr>
         <td><spring:message code="absence.period.duration"/></td>
