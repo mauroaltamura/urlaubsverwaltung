@@ -1,8 +1,8 @@
-Hallo ${recipient.niceName},
+Hallo [[${recipient.niceName}]],
 
 es wurde ein neuer Benutzer erstellt.
 
-    ${personNiceName}
+    [[${personNiceName}
 
 Du kannst unter folgender Adresse die Einstellungen des Benutzers einsehen und anpassen:
-${baseLinkURL}web/person/${personId?c}
+[[${baseLinkURL}web/person/[[${personId?c}

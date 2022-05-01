@@ -1,0 +1,21 @@
+Hallo [[${application.person.niceName}]],
+
+deine Abwesenheit wurde erfolgreich eingereicht.
+
+    [[${baseLinkURL}]]web/application/[[${application.id}]]
+
+Informationen zur Abwesenheit:
+
+    Zeitraum:            [[${#temporals.format(application.startDate, 'dd.MM.yyyy')}]] bis [[${#temporals.format(application.endDate, 'dd.MM.yyyy')}]], [[${dayLength}]]
+    Art der Abwesenheit: [[${vacationType}]]
+    [# th:if="${not #strings.isEmpty(application.reason)}"]Grund:               [[${application.reason}]][/]
+    [# th:if="${not #strings.isEmpty(application.holidayReplacements)}"]
+    Vertretung: [# th:each="replacement, iterStat : ${application.holidayReplacements}"][# th:text="!${iterStat.last} ? ${replacement.person.niceName} + ',': ${replacement.person.niceName}" /][/]
+    [/]
+    [# th:if="${not #strings.isEmpty(application.address)}"]
+    Anschrift/Telefon:   [[${#strings.trim(application.address)}]]
+    [/]
+    [# th:if="${not #strings.isEmpty(comment.text)}"]
+    Kommentar:           [[${comment.text}]]
+    [/]
+    Erstellungsdatum:    [[${#temporals.format(application.applicationDate, 'dd.MM.yyyy')}]]

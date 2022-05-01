@@ -1,0 +1,26 @@
+Hallo [[${recipient.niceName}]],
+
+es liegt eine zu genehmigende Abwesenheit vor.
+
+    [[${baseLinkURL}]]web/application/[[${application.id}]]
+
+[# th:if="${not #strings.isEmpty(comment.text)"]
+Kommentar von [[${comment.person.niceName}]]:
+[[${comment.text}]]
+
+[/]
+Informationen zur Abwesenheit:
+
+    Mitarbeiter:         [[${application.person.niceName}]]
+    Zeitraum:            [[${application.startDate.format("dd.MM.yyyy")}]] bis [[${application.endDate.format("dd.MM.yyyy")}]], [[${dayLength}]]
+    Art der Abwesenheit: [[${vacationType}]]
+    [# th:if="${not #strings.isEmpty(application.reason)"]
+    Grund:               [[${application.reason}]]
+    [/]
+    [# th:if="${not #strings.isEmpty(application.holidayReplacements)"]
+    Vertretung: [# th:each="replacement, iterStat : ${application.holidayReplacements}"][# th:text="!${iterStat.last} ? ${replacement.person.niceName} + ',': ${replacement.person.niceName}" /][/]
+    [/]
+    [# th:if="${not #strings.isEmpty(application.address)"]
+    Anschrift/Telefon:   [[${#strings.trim(application.address)}]]
+    [/]
+    Erstellungsdatum:    [[${application.applicationDate.format("dd.MM.yyyy")}]]
