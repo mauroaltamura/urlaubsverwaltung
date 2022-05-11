@@ -3,6 +3,7 @@ package org.synyx.urlaubsverwaltung.overview;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -47,6 +48,7 @@ import static org.synyx.urlaubsverwaltung.util.DateUtil.getLastDayOfYear;
  */
 @Controller
 @RequestMapping("/")
+@Transactional
 public class OverviewViewController {
 
     private static final String BEFORE_APRIL_ATTRIBUTE = "beforeApril";
