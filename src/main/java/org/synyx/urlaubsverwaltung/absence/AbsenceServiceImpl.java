@@ -3,6 +3,7 @@ package org.synyx.urlaubsverwaltung.absence;
 import org.apache.commons.collections4.ListUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.synyx.urlaubsverwaltung.absence.AbsencePeriod.RecordMorningNoWorkday;
 import org.synyx.urlaubsverwaltung.absence.AbsencePeriod.RecordNoonNoWorkday;
 import org.synyx.urlaubsverwaltung.application.application.Application;
@@ -41,6 +42,7 @@ import static org.synyx.urlaubsverwaltung.application.application.ApplicationSta
 import static org.synyx.urlaubsverwaltung.sicknote.sicknote.SickNoteStatus.ACTIVE;
 
 @Service
+@Transactional
 public class AbsenceServiceImpl implements AbsenceService {
 
     private static final List<ApplicationStatus> APPLICATION_STATUSES = List.of(ALLOWED, WAITING, TEMPORARY_ALLOWED, ALLOWED_CANCELLATION_REQUESTED);
@@ -65,11 +67,13 @@ public class AbsenceServiceImpl implements AbsenceService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<AbsencePeriod> getOpenAbsences(Person person, LocalDate start, LocalDate end) {
         return getOpenAbsences(List.of(person), start, end);
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<AbsencePeriod> getOpenAbsences(List<Person> persons, LocalDate start, LocalDate end) {
         final DateRange askedDateRange = new DateRange(start, end);
         final List<WorkingTime> workingTimeList = workingTimeService.getByPersons(persons);
@@ -85,6 +89,7 @@ public class AbsenceServiceImpl implements AbsenceService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Map<Person, Map<LocalDate, List<AbsencePeriod>>> getOpenAbsencesForPersons(List<Person> persons, LocalDate start, LocalDate end) {
 
         final DateRange askedDateRange = new DateRange(start, end);
