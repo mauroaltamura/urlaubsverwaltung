@@ -78,22 +78,26 @@ class WorkingTimeServiceImpl implements WorkingTimeService, WorkingTimeWriteServ
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Optional<WorkingTime> getWorkingTime(Person person, LocalDate date) {
         return Optional.ofNullable(workingTimeRepository.findByPersonAndValidityDateEqualsOrMinorDate(person, date))
             .map(entity -> toWorkingTime(entity, this::getSystemDefaultFederalState));
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<WorkingTime> getByPerson(Person person) {
         return toWorkingTimes(workingTimeRepository.findByPersonOrderByValidFromDesc(person));
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<WorkingTime> getByPersons(List<Person> persons) {
         return toWorkingTimes(workingTimeRepository.findByPersonIn(persons));
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Map<DateRange, WorkingTime> getWorkingTimesByPersonAndDateRange(Person person, DateRange dateRange) {
 
         final List<WorkingTime> workingTimesByPerson = toWorkingTimes(workingTimeRepository.findByPersonOrderByValidFromDesc(person));
@@ -126,12 +130,14 @@ class WorkingTimeServiceImpl implements WorkingTimeService, WorkingTimeWriteServ
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Map<DateRange, FederalState> getFederalStatesByPersonAndDateRange(Person person, DateRange dateRange) {
         return getWorkingTimesByPersonAndDateRange(person, dateRange).entrySet().stream()
             .collect(toMap(Map.Entry::getKey, dateRangeWorkingTimeEntry -> dateRangeWorkingTimeEntry.getValue().getFederalState()));
     }
 
     @Override
+    @Transactional(readOnly = true)
     public FederalState getFederalStateForPerson(Person person, LocalDate date) {
         return getWorkingTime(person, date)
             .map(WorkingTime::getFederalState)
@@ -144,6 +150,7 @@ class WorkingTimeServiceImpl implements WorkingTimeService, WorkingTimeWriteServ
     }
 
     @Override
+    @Transactional(readOnly = true)
     public FederalState getSystemDefaultFederalState() {
         return settingsService.getSettings().getWorkingTimeSettings().getFederalState();
     }
