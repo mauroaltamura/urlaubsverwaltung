@@ -6,6 +6,7 @@ import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.synyx.urlaubsverwaltung.account.AccountInteractionService;
 import org.synyx.urlaubsverwaltung.workingtime.WorkingTimeWriteService;
 
@@ -24,7 +25,8 @@ import static org.synyx.urlaubsverwaltung.person.Role.OFFICE;
 /**
  * Implementation for {@link PersonService}.
  */
-@Service("personService")
+@Service
+@Transactional
 class PersonServiceImpl implements PersonService {
 
     private static final Logger LOG = getLogger(lookup().lookupClass());
@@ -114,21 +116,25 @@ class PersonServiceImpl implements PersonService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Optional<Person> getPersonByID(Integer id) {
         return personRepository.findById(id);
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Optional<Person> getPersonByUsername(String username) {
         return personRepository.findByUsername(username);
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Optional<Person> getPersonByMailAddress(String mailAddress) {
         return personRepository.findByEmail(mailAddress);
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<Person> getActivePersons() {
         return personRepository.findAll()
             .stream()
@@ -138,6 +144,7 @@ class PersonServiceImpl implements PersonService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<Person> getInactivePersons() {
         return personRepository.findAll()
             .stream()
@@ -147,6 +154,7 @@ class PersonServiceImpl implements PersonService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<Person> getActivePersonsByRole(final Role role) {
         return getActivePersons().stream()
             .filter(person -> person.hasRole(role))
@@ -154,6 +162,7 @@ class PersonServiceImpl implements PersonService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<Person> getPersonsWithNotificationType(final MailNotification notification) {
         return getActivePersons().stream()
             .filter(person -> person.hasNotificationType(notification))
@@ -161,6 +170,7 @@ class PersonServiceImpl implements PersonService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Person getSignedInUser() {
 
         final Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -205,6 +215,7 @@ class PersonServiceImpl implements PersonService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public int numberOfActivePersons() {
         return personRepository.countByPermissionsNotContaining(INACTIVE);
     }

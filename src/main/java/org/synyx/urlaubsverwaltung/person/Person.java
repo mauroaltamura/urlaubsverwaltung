@@ -1,7 +1,5 @@
 package org.synyx.urlaubsverwaltung.person;
 
-import org.hibernate.annotations.LazyCollection;
-
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.Enumerated;
@@ -13,7 +11,6 @@ import java.util.Objects;
 import static java.util.Collections.emptyList;
 import static java.util.Collections.unmodifiableCollection;
 import static javax.persistence.EnumType.STRING;
-import static org.hibernate.annotations.LazyCollectionOption.FALSE;
 import static org.springframework.util.StringUtils.hasText;
 import static org.synyx.urlaubsverwaltung.person.Role.privilegedRoles;
 
@@ -34,12 +31,10 @@ public class Person {
     private String email;
 
     @ElementCollection
-    @LazyCollection(FALSE)
     @Enumerated(STRING)
     private Collection<Role> permissions;
 
     @ElementCollection
-    @LazyCollection(FALSE)
     @Enumerated(STRING)
     private Collection<MailNotification> notifications;
 
