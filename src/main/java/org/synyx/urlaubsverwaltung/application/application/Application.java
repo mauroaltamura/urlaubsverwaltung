@@ -1,6 +1,5 @@
 package org.synyx.urlaubsverwaltung.application.application;
 
-import org.hibernate.annotations.LazyCollection;
 import org.synyx.urlaubsverwaltung.DurationConverter;
 import org.synyx.urlaubsverwaltung.application.vacationtype.VacationTypeEntity;
 import org.synyx.urlaubsverwaltung.period.DayLength;
@@ -26,7 +25,6 @@ import java.util.Objects;
 
 import static java.time.ZoneOffset.UTC;
 import static javax.persistence.EnumType.STRING;
-import static org.hibernate.annotations.LazyCollectionOption.FALSE;
 import static org.synyx.urlaubsverwaltung.application.application.ApplicationStatus.CANCELLED;
 
 /**
@@ -111,7 +109,6 @@ public class Application {
      */
     private String reason;
 
-    @LazyCollection(FALSE)
     @CollectionTable(name = "holiday_replacements", joinColumns = @JoinColumn(name = "application_id"))
     @ElementCollection
     private List<HolidayReplacementEntity> holidayReplacements = new ArrayList<>();
