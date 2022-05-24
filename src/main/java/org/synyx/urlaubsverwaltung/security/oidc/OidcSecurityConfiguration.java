@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.oauth2.client.InMemoryOAuth2AuthorizedClientService;
 import org.springframework.security.oauth2.client.OAuth2AuthorizedClientService;
+import org.springframework.security.oauth2.client.oidc.userinfo.OidcUserService;
 import org.springframework.security.oauth2.client.oidc.web.logout.OidcClientInitiatedLogoutSuccessHandler;
 import org.springframework.security.oauth2.client.registration.ClientRegistration;
 import org.springframework.security.oauth2.client.registration.ClientRegistrationRepository;
@@ -67,6 +68,11 @@ public class OidcSecurityConfiguration {
     @Bean
     public OidcPersonAuthoritiesMapper oidcPersonAuthoritiesMapper(PersonService personService) {
         return new OidcPersonAuthoritiesMapper(personService);
+    }
+
+    @Bean
+    public UrlaubsverwaltungOAuth2UserService urlaubsverwaltungOAuth2UserService() {
+        return new UrlaubsverwaltungOAuth2UserService(new OidcUserService());
     }
 
     @Bean
