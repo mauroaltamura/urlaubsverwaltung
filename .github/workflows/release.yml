@@ -41,6 +41,7 @@ jobs:
           name: Release Urlaubsverwaltung ${{ steps.vars.outputs.version }}
           body_path: .chglog/${{ steps.vars.outputs.version }}.md
           files: ./target/urlaubsverwaltung-*.war
+          prerelease: true
       - name: Publish docker image to Docker Hub
         run: >
           ./mvnw $MAVEN_CLI_OPTS
