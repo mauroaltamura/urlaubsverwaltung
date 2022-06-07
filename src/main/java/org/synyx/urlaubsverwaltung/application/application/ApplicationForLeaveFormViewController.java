@@ -490,7 +490,6 @@ class ApplicationForLeaveFormViewController {
 
         return new ApplicationForLeaveForm.Builder()
             .id(application.getId())
-            .address(application.getAddress())
             .startDate(application.getStartDate())
             .startTime(application.getStartTime())
             .endDate(application.getEndDate())

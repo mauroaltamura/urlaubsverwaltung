@@ -74,7 +74,6 @@ class ApplicationForLeaveFormValidator implements Validator {
     private static final String ATTRIBUTE_START_DATE = "startDate";
     private static final String ATTRIBUTE_END_DATE = "endDate";
     private static final String ATTRIBUTE_REASON = "reason";
-    private static final String ATTRIBUTE_ADDRESS = "address";
     private static final String ATTRIBUTE_COMMENT = "comment";
     private static final String ATTRIBUTE_HOURS = "hours";
     private static final String ATTRIBUTE_MINUTES = "minutes";
@@ -128,7 +127,6 @@ class ApplicationForLeaveFormValidator implements Validator {
 
         // validate length of texts
         validateStringLength(applicationForm.getReason(), ATTRIBUTE_REASON, errors);
-        validateStringLength(applicationForm.getAddress(), ATTRIBUTE_ADDRESS, errors);
         validateStringLength(applicationForm.getComment(), ATTRIBUTE_COMMENT, errors);
 
         if (!errors.hasErrors()) {

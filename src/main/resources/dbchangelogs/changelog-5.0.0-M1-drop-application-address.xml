@@ -1,0 +1,20 @@
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.10.xsd">
+
+  <changeSet author="schneider" id="drop_application_address">
+    <preConditions>
+      <tableExists tableName="application"/>
+      <columnExists tableName="application" columnName="address"/>
+    </preConditions>
+
+<!--
+    <mergeColumns tableName="application" column1Name="address" joinString="" column2Name="" finalColumnName=""
+                  finalColumnType=""
+-->
+
+    <!--<dropColumn tableName="application" columnName="address"/>-->
+
+  </changeSet>
+</databaseChangeLog>

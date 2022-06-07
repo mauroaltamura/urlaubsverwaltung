@@ -117,11 +117,6 @@ public class Application {
     private List<HolidayReplacementEntity> holidayReplacements = new ArrayList<>();
 
     /**
-     * Further information: address, phone number etc.
-     */
-    private String address;
-
-    /**
      * Date of application for leave creation.
      */
     private LocalDate applicationDate;
@@ -170,14 +165,6 @@ public class Application {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
     }
 
     public LocalDate getApplicationDate() {
@@ -428,7 +415,6 @@ public class Application {
             ", vacationType=" + vacationType +
             ", dayLength=" + dayLength +
             ", holidayReplacements=" + holidayReplacements +
-            ", address='" + address + '\'' +
             ", applicationDate=" + applicationDate +
             ", cancelDate=" + cancelDate +
             ", editedDate=" + editedDate +

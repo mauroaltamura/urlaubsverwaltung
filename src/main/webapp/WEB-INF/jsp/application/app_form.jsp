@@ -490,29 +490,6 @@
                                     </ul>
                                 </div>
 
-                                <%-- Address and phone number--%>
-                                <div class="form-group">
-                                    <label class="control-label col-md-3" for="address">
-                                        <spring:message code="application.data.furtherInformation.address"/>:
-                                    </label>
-                                    <div class="col-md-9">
-                                        <form:textarea id="address" rows="1" path="address" class="form-control"
-                                                       cssErrorClass="form-control error"
-                                                       onkeyup="count(this.value, 'text-address');"
-                                                       onkeydown="maxChars(this,200); count(this.value, 'text-address');"/>
-                                        <div class="tw-mt-1">
-                                            <small class="tw-flex tw-justify-between tw-text-sm tw-text-black tw-text-opacity-50 dark:tw-text-zinc-200 dark:tw-text-opacity-100">
-                                                <span class="tw-flex-grow"></span>
-                                                <span id="text-address"></span><spring:message
-                                                code="action.comment.maxChars"/>
-                                            </small>
-                                        </div>
-                                        <uv:error-text>
-                                            <form:errors path="address"/>
-                                        </uv:error-text>
-                                    </div>
-                                </div>
-
                                 <%-- Comment --%>
                                 <div class="form-group">
                                     <label class="control-label col-md-3" for="comment">

@@ -40,7 +40,6 @@ final class ApplicationMapper {
 
         newApplication.setVacationType(convert(applicationForLeaveForm.getVacationType()));
         newApplication.setDayLength(applicationForLeaveForm.getDayLength());
-        newApplication.setAddress(applicationForLeaveForm.getAddress());
         newApplication.setTeamInformed(applicationForLeaveForm.isTeamInformed());
 
         if (OVERTIME.equals(newApplication.getVacationType().getCategory())) {

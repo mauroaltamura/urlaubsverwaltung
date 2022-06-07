@@ -57,9 +57,6 @@ public class ApplicationForLeaveForm {
 
     private List<HolidayReplacementDto> holidayReplacements = new ArrayList<>();
 
-    // Address and phone number during holiday
-    private String address;
-
     private boolean teamInformed;
 
     private String comment;
@@ -72,14 +69,6 @@ public class ApplicationForLeaveForm {
 
     public void setPerson(Person person) {
         this.person = person;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
     }
 
     public String getEndDateIsoValue() {
@@ -238,7 +227,6 @@ public class ApplicationForLeaveForm {
             ", hours=" + hours +
             ", minutes=" + minutes +
             ", holidayReplacements=" + holidayReplacements +
-            ", address='" + address + '\'' +
             ", teamInformed=" + teamInformed +
             '}';
     }
@@ -257,7 +245,6 @@ public class ApplicationForLeaveForm {
         private String reason;
         private Person holidayReplacementToAdd;
         private List<HolidayReplacementDto> holidayReplacements;
-        private String address;
         private boolean teamInformed;
         private String comment;
         private Integer id;
@@ -313,11 +300,6 @@ public class ApplicationForLeaveForm {
             return this;
         }
 
-        public ApplicationForLeaveForm.Builder address(String address) {
-            this.address = address;
-            return this;
-        }
-
         public ApplicationForLeaveForm.Builder teamInformed(boolean teamInformed) {
             this.teamInformed = teamInformed;
             return this;
@@ -358,7 +340,6 @@ public class ApplicationForLeaveForm {
             form.setMinutes(minutes);
             form.setReason(reason);
             form.setHolidayReplacements(holidayReplacements);
-            form.setAddress(address);
             form.setTeamInformed(teamInformed);
             form.setComment(comment);
             form.setId(id);

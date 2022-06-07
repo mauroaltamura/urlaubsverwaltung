@@ -495,28 +495,6 @@ class ApplicationForLeaveFormValidatorTest {
         verify(errors).rejectValue("reason", "application.error.missingReasonForSpecialLeave");
     }
 
-    // Validate address ------------------------------------------------------------------------------------------------
-    @Test
-    void ensureThereIsAMaximumCharLength() {
-
-        setupOvertimeSettings();
-
-        when(errors.hasErrors()).thenReturn(FALSE);
-        when(workingTimeService.getWorkingTime(any(Person.class), any(LocalDate.class))).thenReturn(Optional.of(createWorkingTime()));
-        when(workDaysCountService.getWorkDaysCount(any(DayLength.class), any(LocalDate.class), any(LocalDate.class), any(Person.class))).thenReturn(ONE);
-        when(overlapService.checkOverlap(any(Application.class))).thenReturn(NO_OVERLAPPING);
-        when(calculationService.checkApplication(any(Application.class))).thenReturn(TRUE);
-
-        appForm.setAddress(
-            "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt"
-                + " ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud "
-                + "exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. ");
-
-        sut.validate(appForm, errors);
-
-        verify(errors).rejectValue("address", "error.entry.tooManyChars");
-    }
-
     // Validate vacation days ------------------------------------------------------------------------------------------
     @Test
     void ensureApplicationForLeaveWithZeroVacationDaysIsNotValid() {

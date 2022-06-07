@@ -14,9 +14,6 @@ Informationen zum Abwesenheit:
     <#if application.holidayReplacements?has_content >
     Vertretung:          <#list application.holidayReplacements as replacement>${replacement.person.niceName}<#if !replacement?is_last>, </#if></#list>
     </#if>
-    <#if (application.address)?has_content>
-    Anschrift/Telefon:   <@compress single_line=true>${application.address}</@compress>
-    </#if>
     <#if (comment.text)?has_content>
     Kommentar:           <@compress single_line=true>${comment.text}</@compress>
     </#if>

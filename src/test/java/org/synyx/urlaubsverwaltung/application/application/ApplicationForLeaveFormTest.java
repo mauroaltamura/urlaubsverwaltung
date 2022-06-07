@@ -56,7 +56,6 @@ class ApplicationForLeaveFormTest {
             .hoursAndMinutes(Duration.ofMinutes(75))
             .reason("Good one.")
             .holidayReplacements(List.of(holidayReplacementDto))
-            .address("Gartenstrasse 67")
             .teamInformed(true)
             .comment("Welcome!")
             .build();
@@ -72,7 +71,6 @@ class ApplicationForLeaveFormTest {
         assertThat(form.getMinutes()).isEqualTo(15);
         assertThat(form.getReason()).isEqualTo("Good one.");
         assertThat(form.getHolidayReplacements()).contains(holidayReplacementDto);
-        assertThat(form.getAddress()).isEqualTo("Gartenstrasse 67");
         assertThat(form.isTeamInformed()).isTrue();
         assertThat(form.getComment()).isEqualTo("Welcome!");
     }
@@ -155,7 +153,6 @@ class ApplicationForLeaveFormTest {
             .hoursAndMinutes(Duration.ZERO)
             .reason("Reason")
             .holidayReplacements(List.of(replacementDto))
-            .address("Address")
             .teamInformed(true)
             .comment("Comment")
             .build();
@@ -164,7 +161,7 @@ class ApplicationForLeaveFormTest {
             "startTime=00:00:00, endDate=+999999999-12-31, endTime=23:59:59, vacationType=VacationType{" +
             "id=1, active=true, category=HOLIDAY, messageKey='message_key', requiresApproval='true', color='YELLOW', visibleToEveryone=false}, dayLength=ZERO, hours=0, minutes=0, " +
             "holidayReplacements=[HolidayReplacementDto{, person=Person{id='null'}, note='null', departments='null'}], " +
-            "address='Address', teamInformed=true}");
+            "teamInformed=true}");
     }
 
     private ApplicationForLeaveForm formWithOvertime(BigDecimal hours, Integer minutes) {

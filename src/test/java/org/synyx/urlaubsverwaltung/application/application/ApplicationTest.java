@@ -198,7 +198,6 @@ class ApplicationTest {
         application.setStartTime(Time.valueOf(LocalTime.MIN));
         application.setCanceller(person);
         application.setReason("Because");
-        application.setAddress("Address");
         application.setCancelDate(LocalDate.MAX);
         application.setTeamInformed(true);
 
@@ -208,7 +207,7 @@ class ApplicationTest {
             "startTime=00:00:00, endDate=+999999999-12-31, endTime=23:59:59, " +
             "vacationType=VacationTypeEntity{id=null, active=false, category=HOLIDAY, messageKey='null', requiresApproval=false, color=YELLOW, visibleToEveryone=false}, " +
             "dayLength=FULL, holidayReplacements=[HolidayReplacement{, person=Person{id='10'}, note='hello myself'}], " +
-            "address='Address', applicationDate=1970-01-01, cancelDate=+999999999-12-31, editedDate=+999999999-12-31, " +
+            "applicationDate=1970-01-01, cancelDate=+999999999-12-31, editedDate=+999999999-12-31, " +
             "remindDate=+999999999-12-31, status=ALLOWED, teamInformed=true, hours=PT10H}");
     }
 
