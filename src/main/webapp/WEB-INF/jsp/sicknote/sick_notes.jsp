@@ -56,6 +56,9 @@
                 <a href="${URL_PREFIX}/sicknote/statistics" class="icon-link tw-px-1" data-title="<spring:message code="action.sicknotes.statistics"/>">
                     <icon:presentation-chart-bar className="tw-w-5 tw-h-5" />
                 </a>
+                <a href="${URL_PREFIX}/sicknote/statistics/download?from=${from}&to=${to}" class="icon-link tw-px-1" data-title="<spring:message code="action.sicknotes.download"/>">
+                    <icon:download className="tw-w-5 tw-h-5'" />
+                </a>
                 <uv:print/>
             </jsp:attribute>
             <jsp:attribute name="below">
